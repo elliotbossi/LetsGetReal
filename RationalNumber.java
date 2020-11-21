@@ -6,11 +6,11 @@ public class RationalNumber extends RealNumber
     super(0.0);
     numerator = nume;
     denominator = deno;
+    reduce();
     if (denominator == 0){
       denominator = 1;
       numerator = 0;
     }
-    reduce();
     if (denominator < 0){
       denominator = denominator * -1;
       numerator = numerator * -1;

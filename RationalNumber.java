@@ -34,9 +34,7 @@ public class RationalNumber extends RealNumber
     RationalNumber x = new RationalNumber(getDenominator(),getNumerator());
     return x;
   }
-  /**
-  *@return true when the RationalNumbers have the same numerators and denominators, false otherwise.
-  */
+
   public boolean equals(RationalNumber other){
     if ((getNumerator() == other.getNumerator()) && (getDenominator() == other.getDenominator())){
       return true;
@@ -48,11 +46,6 @@ public class RationalNumber extends RealNumber
     return (Integer.toString(getNumerator()) + "/" + Integer.toString(getDenominator()));
   }
 
-  /**Calculate the GCD of two integers.
-  *@param a the first integers
-  *@param b the second integer
-  *@return the value of the GCD
-  */
   private static int gcd(int a, int b){
     int r = 100;
     if (a > b){
@@ -89,11 +82,6 @@ public class RationalNumber extends RealNumber
     }
 }
 
-  /**
-  *Divide the numerator and denominator by the GCD
-  *This must be used to maintain that all RationalNumbers are
-  *reduced after construction.
-  */
   private void reduce(){
     int x = gcd(getNumerator(),getDenominator());
     numerator = (getNumerator() / x);
@@ -104,14 +92,16 @@ public class RationalNumber extends RealNumber
   *Return a new RationalNumber that is the product of this and the other
   */
   public RationalNumber multiply(RationalNumber other){
-    return null;
+    RationalNumber x = new RationalNumber((getNumerator() * other.getNumerator()), (getDenominator() * other.getDenominator()));
+    return x;
   }
 
   /**
   *Return a new RationalNumber that is the this divided by the other
   */
   public RationalNumber divide(RationalNumber other){
-    return null;
+    RationalNumber x = new RationalNumber((getNumerator() * other.getNumerator()), (getDenominator() * other.getDenominator()));
+    return x;
   }
 
   /**

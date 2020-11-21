@@ -87,33 +87,24 @@ public class RationalNumber extends RealNumber
     numerator = (getNumerator() / x);
     denominator = (getDenominator() / x);
   }
-  /******************Operations Return a new RationalNumber!!!!****************/
-  /**
-  *Return a new RationalNumber that is the product of this and the other
-  */
+
   public RationalNumber multiply(RationalNumber other){
     RationalNumber x = new RationalNumber((getNumerator() * other.getNumerator()), (getDenominator() * other.getDenominator()));
     return x;
   }
 
-  /**
-  *Return a new RationalNumber that is the this divided by the other
-  */
   public RationalNumber divide(RationalNumber other){
-    RationalNumber x = new RationalNumber((getNumerator() * other.getNumerator()), (getDenominator() * other.getDenominator()));
+    RationalNumber x = new RationalNumber((getNumerator() / other.getNumerator()), (getDenominator() / other.getDenominator()));
     return x;
   }
 
-  /**
-  *Return a new RationalNumber that is the sum of this and the other
-  */
   public RationalNumber add(RationalNumber other){
-    return null;
+    RationalNumber x = new RationalNumber(((getNumerator() * other.getDenominator()) + (other.getNumerator() * getDenominator())), (getDenominator() * other.getDenominator()));
+    return x;
   }
-  /**
-  *Return a new RationalNumber that this minus the other
-  */
+
   public RationalNumber subtract(RationalNumber other){
-    return null;
+    RationalNumber x = new RationalNumber(((getNumerator() * other.getDenominator()) - (other.getNumerator() * getDenominator())), (getDenominator() * other.getDenominator()));
+    return x;
   }
 }

@@ -2,52 +2,50 @@ public class RationalNumber extends RealNumber
 {
   private int numerator, denominator;
 
-  /**Initialize the RationalNumber with the provided values
-  *  if the denominator is 0, make the fraction 0/1 instead
-  *  If the denominator is negative, negate both numerator and denominator
-  *@param nume the numerator
-  *@param deno the denominator
-  */
   public RationalNumber(int nume, int deno){
-    super(0.0);//this value is ignored!
+    super(0.0);
+    numerator = nume;
+    denominator = deno;
+    if (denominator == 0){
+      numerator = 0;
+      denominator = 1;
+    }
+    if (denominator < 0){
+      numerator = numerator * (-1);
+      denominator = denominator * (-1);
+    }
   }
 
   public double getValue(){
-    return 0.0;
+    double x = (double) getNumerator();
+    double y = (double) getDenominator();
+    return (x/y);
   }
 
-  /**
-  *@return the numerator
-  */
   public int getNumerator(){
-    return 0;
+    return numerator;
   }
-  /**
-  *@return the denominator
-  */
+
   public int getDenominator(){
-    return 0;
+    return denominator;
   }
-  /**
-  *@return a new RationalNumber that has the same numerator
-  *and denominator as this RationalNumber but reversed.
-  */
+
   public RationalNumber reciprocal(){
-    return null;
+    RationalNumber x = new RationalNumber(getDenominator(),getNumerator());
+    return x;
   }
   /**
   *@return true when the RationalNumbers have the same numerators and denominators, false otherwise.
   */
   public boolean equals(RationalNumber other){
+    if ((getNumerator() == other.getNumerator()) && (getDenominator() == other.getDenominator())){
+      return true;
+    }
     return false;
   }
 
-
-  /**
-  *@return the value expressed as "3/4" or "8/3"
-  */
   public String toString(){
-    return "0";
+    return (Integer.toString(getNumerator()) + "/" + Integer.toString(getDenominator()));
   }
 
   /**Calculate the GCD of two integers.
@@ -56,10 +54,40 @@ public class RationalNumber extends RealNumber
   *@return the value of the GCD
   */
   private static int gcd(int a, int b){
-    /*use euclids method or a better one*/
-    http://sites.math.rutgers.edu/~greenfie/gs2004/euclid.html
-    return 0;
-  }
+    int r = 100;
+    if (a > b){
+      if (a%b == 0){
+        return b;
+      }
+      if (b == 0){
+        return a;
+      }
+      else {
+        while (r != 0){
+          r = a % b;
+          a = b;
+          b = r;
+        }
+        return a;
+      }
+    }
+    else if (b > a){
+      if (b%a == 0){
+        return a;
+      }
+      if (a == 0){
+        return b;
+      }
+      else {
+        while (r != 0){
+          r = b % a;
+          b = a;
+          a = r;
+        }
+        return b;
+      }
+    }
+}
 
   /**
   *Divide the numerator and denominator by the GCD
@@ -67,7 +95,9 @@ public class RationalNumber extends RealNumber
   *reduced after construction.
   */
   private void reduce(){
-
+    int x = gcd(getNumerator(),getDenominator());
+    numerator = (getNumerator() / x);
+    denominator = (getDenominator() / x);
   }
   /******************Operations Return a new RationalNumber!!!!****************/
   /**
@@ -96,4 +126,4 @@ public class RationalNumber extends RealNumber
   public RationalNumber subtract(RationalNumber other){
     return null;
   }
-} 
+}

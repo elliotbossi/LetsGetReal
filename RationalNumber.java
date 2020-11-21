@@ -7,12 +7,13 @@ public class RationalNumber extends RealNumber
     numerator = nume;
     denominator = deno;
     if (denominator == 0){
-      numerator = 0;
       denominator = 1;
+      numerator = 0;
     }
+    reduce();
     if (denominator < 0){
-      numerator = numerator * (-1);
-      denominator = denominator * (-1);
+      denominator = denominator * -1;
+      numerator = numerator * -1;
     }
   }
 
@@ -39,7 +40,9 @@ public class RationalNumber extends RealNumber
     if ((getNumerator() == other.getNumerator()) && (getDenominator() == other.getDenominator())){
       return true;
     }
-    return false;
+    else {
+      return false;
+    }
   }
 
   public String toString(){
@@ -80,6 +83,9 @@ public class RationalNumber extends RealNumber
         return b;
       }
     }
+    else {
+      return a;
+    }
 }
 
   private void reduce(){
@@ -94,7 +100,7 @@ public class RationalNumber extends RealNumber
   }
 
   public RationalNumber divide(RationalNumber other){
-    RationalNumber x = new RationalNumber((getNumerator() / other.getNumerator()), (getDenominator() / other.getDenominator()));
+    RationalNumber x = new RationalNumber((getNumerator() * other.getDenominator()), (getDenominator() * other.getNumerator()));
     return x;
   }
 

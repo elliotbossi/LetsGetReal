@@ -1,5 +1,4 @@
-public class RationalNumber extends RealNumber
-{
+public class RationalNumber extends RealNumber{
   private int numerator, denominator;
 
   public RationalNumber(int nume, int deno){
@@ -46,17 +45,25 @@ public class RationalNumber extends RealNumber
   }
 
   public String toString(){
-    return (Integer.toString(getNumerator()) + "/" + Integer.toString(getDenominator()));
+    if (getNumerator() == 0){
+      return "0";
+    }
+    else if (getDenominator() == 1){
+      return Integer.toString(getNumerator());
+    }
+    else{
+      return (Integer.toString(getNumerator()) + "/" + Integer.toString(getDenominator()));
+    }
   }
 
   private static int gcd(int a, int b){
     int r = 100;
     if (a > b){
-      if (a%b == 0){
-        return b;
-      }
       if (b == 0){
         return a;
+      }
+      if (a%b == 0){
+        return b;
       }
       else {
         while (r != 0){
@@ -68,11 +75,11 @@ public class RationalNumber extends RealNumber
       }
     }
     else if (b > a){
-      if (b%a == 0){
-        return a;
-      }
       if (a == 0){
         return b;
+      }
+      if (b%a == 0){
+        return a;
       }
       else {
         while (r != 0){
